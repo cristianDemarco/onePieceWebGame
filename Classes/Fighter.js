@@ -1,10 +1,10 @@
-class Player {
-    constructor({position, velocity, character}){
+class Fighter {
+    constructor({position, velocity}){
         this.position = position
         this.velocity = velocity
         this.width = 100
         this.height = 100
-        this.facingDirection = "right"
+        this.facingDirection;
         this.attackBox = {
             position : this.position,
             width : this.width,

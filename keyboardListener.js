@@ -74,9 +74,14 @@ function checkIfKeysPressed(){
         player.velocity.y = -15
         canJump = false
         setTimeout(() => canJump = true, 2000)
-    } else if (keys.spacebar.pressed && player.attackCollision() && canAttack){
-        enemy.health -= 10
+    } else if (keys.spacebar.pressed && canAttack){
         canAttack = false
-        setTimeout(() => canAttack = true, 500)
+        player.isAttacking = true
+
+        setTimeout(() => canAttack = true, 1000)
+            
+        if(player.attackCollision()){
+            enemy.health -= 10
+        }
     }
 }

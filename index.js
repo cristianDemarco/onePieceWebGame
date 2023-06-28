@@ -4,31 +4,24 @@ c = canvas.getContext("2d")
 canvas.width = innerWidth
 canvas.height = innerHeight
 
-fetch("./assets/rufySpriteSheet.json")
-  .then(response => response.json())
-  .then(json => {
-    // Utilizza l'oggetto JSON come desideri
-    console.log(json)
-  })
-  .catch(err => console.error(err));
-
 const gravity = 0.2
 const player = new Player ({
     position : {
         x : 200,
-        y : canvas.height-200
+        y : canvas.height-300
     },
 
     velocity : {
         x : 0,
         y : 0
-    }
+    },
+    "character" : "rufy"
 })
 
 const enemy = new Enemy ({
     position : {
         x : 500,
-        y : canvas.height - 200
+        y : canvas.height - 300
     },
 
     velocity : {
@@ -36,13 +29,6 @@ const enemy = new Enemy ({
         y : 0
     }
 })
-
-function createImage(src){
-    image = new Image
-    image.src = src
-
-    return image
-}
 
 function animate(){
     requestAnimationFrame(animate)
@@ -57,7 +43,8 @@ function animate(){
 
     checkIfKeysPressed()
 
-    console.log(enemy.position.y)
+    console.log(player.position.y, enemy.position.y)
+    //console.log(player.attackBox.width)
 }
 
 animate()
