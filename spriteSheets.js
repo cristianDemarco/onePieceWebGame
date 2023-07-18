@@ -1,5 +1,5 @@
 const spriteSheets = {
-    "rufySpriteSheet": {
+    "rufySpriteSheets": {
             "standingSpriteSheet": [
                 //7 frames
                 {
@@ -147,7 +147,7 @@ const spriteSheets = {
                     "h": "52"
                 }
             ],
-            "gumKickSpriteSheet": [
+            "gumStampSpriteSheet": [
                 //7 frames
                 {
                     "x": "9",
@@ -192,5 +192,28 @@ const spriteSheets = {
                     "h": "43"
                 }
             ]
+    },
+    "arlongSpriteSheets": {
+        "standingSpriteSheet": [
+            //3 frames
+            //{
+            //    "x": "3",
+            //    "y": "1447",
+            //    "w": "44",
+            //    "h": "81"
+            //},
+            {
+                "x": "63",
+                "y": "1448",
+                "w": "47",
+                "h": "80"
+            },
+            {
+                "x": "120",
+                "y": "1447",
+                "w": "47",
+                "h": "81"
+            }
+        ]
     }
 }

@@ -71,7 +71,7 @@ function checkIfKeysPressed(){
         player.facingDirection = "right"
         player.velocity.x = 10
     }else if (keys.w.pressed && lastKey === "w" && canJump){
-        player.velocity.y = -15
+        player.velocity.y = -13
         canJump = false
         setTimeout(() => canJump = true, 2000)
     } else if (keys.spacebar.pressed && canAttack){

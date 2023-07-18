@@ -8,27 +8,36 @@ const gravity = 0.2
 const player = new Player ({
     position : {
         x : 200,
-        y : canvas.height-300
+        y : canvas.height - 100 - 100
     },
 
     velocity : {
         x : 0,
         y : 0
     },
-    "character" : "rufy"
+    character : "rufy"
 })
+
+console.log(player.position)
+console.log(player.character)
+console.log(player.velocity)
 
 const enemy = new Enemy ({
     position : {
         x : 500,
-        y : canvas.height - 300
+        y : canvas.height - 100 - 100
     },
 
     velocity : {
         x : 0,
         y : 0
-    }
+    },
+    character : "arlong"
 })
+
+console.log(enemy.position)
+console.log(enemy.character)
+console.log(enemy.velocity)
 
 function animate(){
     requestAnimationFrame(animate)
@@ -42,9 +51,6 @@ function animate(){
     enemy.update()
 
     checkIfKeysPressed()
-
-    console.log(player.position.y, enemy.position.y)
-    //console.log(player.attackBox.width)
 }
 
 animate()
