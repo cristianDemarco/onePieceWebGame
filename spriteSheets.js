@@ -195,13 +195,7 @@ const spriteSheets = {
     },
     "arlongSpriteSheets": {
         "standingSpriteSheet": [
-            //3 frames
-            //{
-            //    "x": "3",
-            //    "y": "1447",
-            //    "w": "44",
-            //    "h": "81"
-            //},
+            //2 frames
             {
                 "x": "63",
                 "y": "1448",

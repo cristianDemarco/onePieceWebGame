@@ -35,7 +35,7 @@ class Enemy extends Fighter{
     }
 
     update(){
-        //this.fightingAlgorithm()
+        this.drawHealthbar()
 
         if(this.position.x + this.velocity.x >= 0 &&
             this.position.x + this.velocity.x + this.width <= canvas.width){

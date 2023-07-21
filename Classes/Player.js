@@ -9,11 +9,7 @@ class Player extends Fighter {
     }
 
     draw(){
-        c.strokeStyle = "green"
-        c.strokeRect(this.position.x, this.position.y, this.width, this.height)
-        c.strokeStyle = "red"
-        c.strokeRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
-        
+        // Animations
         if(this.isAttacking){
             player.createAnimation("gumStampSpriteSheet", player.facingDirection, 7, 13, 3, false)
 
@@ -29,6 +25,19 @@ class Player extends Fighter {
             if(this.velocity.y != 0){
                 this.createAnimation("jumpingSpriteSheet", this.facingDirection, 10, 10, 3, true)
             }
+        }
+    }
+
+    drawAttackBox(){
+        c.strokeStyle = "green"
+        c.strokeRect(this.position.x, this.position.y, this.width, this.height)
+        
+        if(this.facingDirection == "right"){
+            c.strokeStyle = "red"
+            c.strokeRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
+        }else{
+            c.strokeStyle = "red"
+            c.strokeRect(this.attackBox.position.x + this.attackBox.width - 50, this.attackBox.position.y, -this.attackBox.width, this.attackBox.height)
         }
     }
 
@@ -55,6 +64,9 @@ class Player extends Fighter {
     }
 
     update(){
+        this.drawAttackBox()
+        this.drawHealthbar()
+
         if(this.position.x + this.velocity.x >= 0 &&
             this.position.x + this.velocity.x + this.width <= canvas.width){
                 this.position.x += this.velocity.x
@@ -62,7 +74,7 @@ class Player extends Fighter {
 
         this.position.y += this.velocity.y
 
-        if(this.position.y + this.height + this.velocity.y >= canvas.height - 70){
+        if(this.position.y + this.height + this.velocity.y >= canvas.height - groundOffset){
             this.velocity.y = 0
         } else this.velocity.y += gravity
 

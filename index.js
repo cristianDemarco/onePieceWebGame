@@ -5,6 +5,7 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 const gravity = 0.2
+const groundOffset = 70
 const player = new Player ({
     position : {
         x : 200,
@@ -35,9 +36,6 @@ function animate(){
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
     c.drawImage(createImage("./assets/eniesLobbyGameSprite.png"), 0, 0)
-
-    player.drawHealthbar()
-    enemy.drawHealthbar()
 
     player.update()
     enemy.update()

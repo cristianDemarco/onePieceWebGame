@@ -7,7 +7,7 @@ class Fighter {
         this.width = spriteSheets[this.character + "SpriteSheets"]["standingSpriteSheet"][0]["w"]
         this.height = spriteSheets[this.character + "SpriteSheets"]["standingSpriteSheet"][0]["h"] * 3
         
-        this.position.y = canvas.height - 70 - this.height
+        this.position.y = canvas.height - groundOffset- this.height
 
         this.facingDirection = null
         this.attackBox = {
