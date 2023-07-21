@@ -8,7 +8,7 @@ const gravity = 0.2
 const player = new Player ({
     position : {
         x : 200,
-        y : canvas.height - 100 - 100
+        y : undefined
     },
 
     velocity : {
@@ -18,14 +18,10 @@ const player = new Player ({
     character : "rufy"
 })
 
-console.log(player.position)
-console.log(player.character)
-console.log(player.velocity)
-
 const enemy = new Enemy ({
     position : {
-        x : 500,
-        y : canvas.height - 100 - 100
+        x : 1400,
+        y : undefined
     },
 
     velocity : {
@@ -34,10 +30,6 @@ const enemy = new Enemy ({
     },
     character : "arlong"
 })
-
-console.log(enemy.position)
-console.log(enemy.character)
-console.log(enemy.velocity)
 
 function animate(){
     requestAnimationFrame(animate)

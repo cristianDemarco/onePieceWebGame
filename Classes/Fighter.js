@@ -1,11 +1,14 @@
 class Fighter {
 
     constructor(position, velocity, character){
-        this.width = 100
-        this.height = 100
         this.position = position
         this.velocity = velocity
         this.character = character
+        this.width = spriteSheets[this.character + "SpriteSheets"]["standingSpriteSheet"][0]["w"]
+        this.height = spriteSheets[this.character + "SpriteSheets"]["standingSpriteSheet"][0]["h"] * 3
+        
+        this.position.y = canvas.height - 70 - this.height
+
         this.facingDirection = null
         this.attackBox = {
             position : this.position,
@@ -57,19 +60,5 @@ class Fighter {
     }
 
     update(){
-        if(this.position.x + this.velocity.x >= 0 &&
-            this.position.x + this.velocity.x + this.width <= canvas.width){
-                this.position.x += this.velocity.x
-            }
-        
-        this.position.y += this.velocity.y
-
-        if(this.position.y + this.height + this.velocity.y >= canvas.height - 100){
-            this.velocity.y = 0
-        } else {
-            this.velocity.y += gravity
-        }
-
-        this.draw()
     }
 }

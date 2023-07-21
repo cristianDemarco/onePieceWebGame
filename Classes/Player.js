@@ -53,4 +53,19 @@ class Player extends Fighter {
         c.fillStyle = "green"
         c.fillRect(110, 60, (730 * this.health)/this.maxHealth, 55)
     }
+
+    update(){
+        if(this.position.x + this.velocity.x >= 0 &&
+            this.position.x + this.velocity.x + this.width <= canvas.width){
+                this.position.x += this.velocity.x
+            }
+
+        this.position.y += this.velocity.y
+
+        if(this.position.y + this.height + this.velocity.y >= canvas.height - 70){
+            this.velocity.y = 0
+        } else this.velocity.y += gravity
+
+        this.draw()
+    }
 }

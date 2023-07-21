@@ -47,7 +47,6 @@ class Enemy extends Fighter{
         } else this.velocity.y += gravity
 
         this.position.y = Math.round(this.position.y += this.velocity.y)
-        
 
         this.draw()
     }
