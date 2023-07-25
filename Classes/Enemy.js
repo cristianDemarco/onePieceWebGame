@@ -6,11 +6,18 @@ class Enemy extends Fighter{
         this.facingDirection = "left"
         this.maxHealth = 1000,
         this.health = this.maxHealth
+
+        this.animationManager = new AnimationManager({
+            character : "arlong",
+            isPlayerOrEnemy : "enemy"
+        })
     }
 
     draw(){
-        if(this.velocity.x === 0 && this.velocity.y === 0){
-            this.createAnimation("standingSpriteSheet", this.facingDirection, 2, 50, 3, true)
+        if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
+            this.animation = this.animationManager.setAnimation(
+                "standing", this.facingDirection, false, this.position, this.width, this.height
+            )
         }
 
         //c.fillStyle = "blue"
@@ -18,6 +25,8 @@ class Enemy extends Fighter{
 
         //c.fillStyle = "green"
         //c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
+
+        this.animationManager.facingDirection = this.facingDirection
         
     }
 
@@ -49,5 +58,6 @@ class Enemy extends Fighter{
         this.position.y = Math.round(this.position.y += this.velocity.y)
 
         this.draw()
+        this.animationManager.play()
     }
 }

@@ -6,26 +6,34 @@ class Player extends Fighter {
         this.facingDirection = "right"
         this.maxHealth = 1000
         this.health = this.maxHealth
+
+        this.animationManager = new AnimationManager({
+            character : "rufy",
+            isPlayerOrEnemy : "player"
+        })
     }
 
     draw(){
         // Animations
-        if(this.isAttacking){
-            player.createAnimation("gumStampSpriteSheet", player.facingDirection, 7, 13, 3, false)
-
-        }else{
-            if(this.velocity.x === 0 && this.velocity.y === 0){
-                this.createAnimation("standingSpriteSheet", this.facingDirection, 7, 15, 3, true)
-            }
-
-            if(this.velocity.x != 0 && this.velocity.y === 0){
-                this.createAnimation("runningSpriteSheet", this.facingDirection, 6, 8, 3, true)
-            }
-
-            if(this.velocity.y != 0){
-                this.createAnimation("jumpingSpriteSheet", this.facingDirection, 10, 10, 3, true)
-            }
+        if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
+            this.animation = this.animationManager.setAnimation(
+                "standing", this.facingDirection, false, this.position, this.width, this.height
+            )
         }
+
+        if(this.velocity.x != 0 && this.velocity.y === 0 && this.animationManager.animation != "running"){
+            this.animation = this.animationManager.setAnimation(
+                "running", this.facingDirection, false, this.position, this.width, this.height
+            )
+        }
+
+        if(this.velocity.y != 0 && this.animationManager.animation != "jumping"){
+            this.animation = this.animationManager.setAnimation(
+                "jumping", this.facingDirection, false, this.position, this.width, this.height
+            )
+        }
+
+        this.animationManager.facingDirection = this.facingDirection
     }
 
     drawAttackBox(){
@@ -79,5 +87,6 @@ class Player extends Fighter {
         } else this.velocity.y += gravity
 
         this.draw()
+        this.animationManager.play()
     }
 }

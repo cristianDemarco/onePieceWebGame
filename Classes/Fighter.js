@@ -1,11 +1,12 @@
 class Fighter {
 
-    constructor(position, velocity, character){
+    constructor(position, velocity, character, scale = 3){
         this.position = position
         this.velocity = velocity
         this.character = character
-        this.width = spriteSheets[this.character + "SpriteSheets"]["standingSpriteSheet"][0]["w"]
-        this.height = spriteSheets[this.character + "SpriteSheets"]["standingSpriteSheet"][0]["h"] * 3
+        this.scale = scale
+        this.width = charactersData[this.character]["spriteSheets"]["standing"]["spriteSheet"][0]["w"] * scale
+        this.height = charactersData[this.character]["spriteSheets"]["standing"]["spriteSheet"][0]["h"] * scale
         
         this.position.y = canvas.height - groundOffset- this.height
 
@@ -15,13 +16,8 @@ class Fighter {
             width : this.width,
             height : this.height
         }
-        this.isAttacking = false
         this.maxHealth = null
         this.health = this.maxHealth
-        this.currentFrame = 0
-        this.frameCount = 0
-        this.leftSpriteSheetImage = createImage("/home/cristian/VSCode/onePieceWebGame/assets/" + this.character + "SpriteSheetLeft.png")
-        this.rightSpriteSheetImage = createImage("/home/cristian/VSCode/onePieceWebGame/assets/" + this.character + "SpriteSheetRight.png")
     }
 
     draw(){
