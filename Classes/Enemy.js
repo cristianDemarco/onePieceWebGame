@@ -16,7 +16,7 @@ class Enemy extends Fighter{
     draw(){
         if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
             this.animation = this.animationManager.setAnimation(
-                "standing", this.facingDirection, false, null, this.position, this.width, this.height
+                "standing", this.facingDirection, false, this.position, this.width, this.height
             )
         }
 
@@ -27,8 +27,6 @@ class Enemy extends Fighter{
         //c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
 
         this.animationManager.facingDirection = this.facingDirection
-        this.drawHealthbar()
-        this.animationManager.play()
         
     }
 
@@ -46,6 +44,8 @@ class Enemy extends Fighter{
     }
 
     update(){
+        this.drawHealthbar()
+
         if(this.position.x + this.velocity.x >= 0 &&
             this.position.x + this.velocity.x + this.width <= canvas.width){
                 this.position.x += this.velocity.x
@@ -58,5 +58,6 @@ class Enemy extends Fighter{
         this.position.y = Math.round(this.position.y += this.velocity.y)
 
         this.draw()
+        this.animationManager.play()
     }
 }

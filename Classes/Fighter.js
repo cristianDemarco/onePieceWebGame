@@ -16,12 +16,43 @@ class Fighter {
             width : this.width,
             height : this.height
         }
-        
         this.maxHealth = null
         this.health = this.maxHealth
     }
 
     draw(){
+    }
+
+    createAnimation(animation, direction, maxFrames, frameRate, scale, loop){
+        if(this.currentFrame >= maxFrames) this.currentFrame = 0
+        let sprite = spriteSheets[this.character + "SpriteSheets"][animation][this.currentFrame]
+        if(direction === "left"){
+            c.drawImage(this.leftSpriteSheetImage,
+                        sprite.x, sprite.y,
+                        sprite.w, sprite.h,
+                        this.position.x, this.position.y,
+                        sprite.w * scale, sprite.h * scale)
+        }else{
+            c.drawImage(this.rightSpriteSheetImage,
+                        this.rightSpriteSheetImage.width - sprite.x, sprite.y,
+                        -sprite.w, sprite.h,
+                        this.position.x, this.position.y,
+                        sprite.w * scale, sprite.h * scale)
+            }
+
+        this.width = sprite.w * scale
+        this.attackBox.width = sprite.w * scale + 50
+        
+        if(this.frameCount % frameRate === 0){
+            this.currentFrame++
+            if(this.currentFrame === maxFrames) {
+                this.currentFrame = 0
+
+                if(!loop) this.isAttacking = false
+            }
+        }
+
+        this.frameCount ++
     }
 
     update(){

@@ -1,4 +1,4 @@
-rcanvas = document.querySelector("canvas")
+canvas = document.querySelector("canvas")
 c = canvas.getContext("2d")
 
 canvas.width = innerWidth
