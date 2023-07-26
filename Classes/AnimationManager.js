@@ -5,10 +5,11 @@ class AnimationManager {
         this.isPlayerOrEnemy = isPlayerOrEnemy
     }
 
-    setAnimation(animation, facingDirection, isAttack, position, width, height, scale = 3){
+    setAnimation(animation, facingDirection, isAttack, ATTK, position, width, height, scale = 3){
         this.animation = animation
         this.facingDirection = facingDirection
         this.isAttackOrAnimation = isAttack === true ? "attacks" : "spriteSheets"
+        this.ATTK = ATTK
         this.position = position
         this.width = width
         this.height = height
@@ -20,13 +21,10 @@ class AnimationManager {
         this.leftSpriteSheetImage = createImage("./assets/" + this.character + "SpriteSheetLeft.png")
         this.rightSpriteSheetImage = createImage("./assets/" + this.character + "SpriteSheetRight.png")
         this.frameCount = 0
+        this.currentFrame = 0
     }
 
     play(){
-        if(this.currentFrame >= this.maxFrames) {
-            this.currentFrame = 0
-        }
-
         let sprite = this.spriteSheet[this.currentFrame]
 
         if(this.facingDirection === "left"){
@@ -56,8 +54,11 @@ class AnimationManager {
             if(this.currentFrame === this.maxFrames) {
                 this.currentFrame = 0
 
-                if(!this.isAttackOrAnimation === "attack") {
-                    this.isAttacking = false
+                if(this.isAttackOrAnimation === "attacks") {
+                    if(this.isPlayerOrEnemy === "player"){
+                        player.moveset[this.ATTK].isAttacking = false
+                        player.isAttacking = false
+                    }
                 }
             }
         }

@@ -6,34 +6,81 @@ class Player extends Fighter {
         this.facingDirection = "right"
         this.maxHealth = 1000
         this.health = this.maxHealth
+        this.isAttacking = false
 
         this.animationManager = new AnimationManager({
-            character : "rufy",
+            character : this.character,
             isPlayerOrEnemy : "player"
         })
+
+        this.moveset = {
+            ATTK1 : {
+                isAttacking : false,
+                canAttack : true
+            },
+            ATTK2 : {
+                isAttacking : false,
+                canAttack : true
+            },
+            ATTK3 : {
+                isAttacking : false,
+                canAttack : true
+            },
+            ATTK4 : {
+                isAttacking : false,
+                canAttack : true
+            },
+        }
     }
 
     draw(){
         // Animations
-        if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
-            this.animation = this.animationManager.setAnimation(
-                "standing", this.facingDirection, false, this.position, this.width, this.height
-            )
-        }
+        let moveset = Object.values(this.moveset)
 
-        if(this.velocity.x != 0 && this.velocity.y === 0 && this.animationManager.animation != "running"){
-            this.animation = this.animationManager.setAnimation(
-                "running", this.facingDirection, false, this.position, this.width, this.height
-            )
-        }
+        moveset.forEach(element => {
+            if(element.isAttacking){
+                this.isAttacking = true
+            }
+        })
+        
+        if(this.isAttacking){
+            if(this.moveset["ATTK1"].isAttacking && this.animationManager.animation != "stamp"){
+                this.animation = this.animationManager.setAnimation(
+                    "stamp", this.facingDirection, true, "ATTK1", this.position, this.width, this.height, 3
+                )
+            } else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "pistol"){
+                this.animation = this.animationManager.setAnimation(
+                    "pistol", this.facingDirection, true, "ATTK2", this.position, this.width, this.height, 3
+                )
+            } else if(this.moveset["ATTK3"].isAttacking && this.animationManager.animation != "gatling"){
+                this.animation = this.animationManager.setAnimation(
+                    "gatling", this.facingDirection, true, "ATTK3", this.position, this.width, this.height, 3
+                )
+            }
+        }else{
+            if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
+                this.animation = this.animationManager.setAnimation(
+                    "standing", this.facingDirection, false, null, this.position, this.width, this.height
+                )
+            }
 
-        if(this.velocity.y != 0 && this.animationManager.animation != "jumping"){
-            this.animation = this.animationManager.setAnimation(
-                "jumping", this.facingDirection, false, this.position, this.width, this.height
-            )
-        }
+            if(this.velocity.x != 0 && this.velocity.y === 0 && this.animationManager.animation != "running"){
+                this.animation = this.animationManager.setAnimation(
+                    "running", this.facingDirection, false, null, this.position, this.width, this.height
+                )
+            }
 
+            if(this.velocity.y != 0 && this.animationManager.animation != "jumping"){
+                this.animation = this.animationManager.setAnimation(
+                    "jumping", this.facingDirection, false, null, this.position, this.width, this.height
+                )
+            }
+        }
         this.animationManager.facingDirection = this.facingDirection
+        
+        this.drawAttackBox()
+        this.drawHealthbar()
+        this.animationManager.play()
     }
 
     drawAttackBox(){
@@ -72,9 +119,6 @@ class Player extends Fighter {
     }
 
     update(){
-        this.drawAttackBox()
-        this.drawHealthbar()
-
         if(this.position.x + this.velocity.x >= 0 &&
             this.position.x + this.velocity.x + this.width <= canvas.width){
                 this.position.x += this.velocity.x
@@ -87,6 +131,5 @@ class Player extends Fighter {
         } else this.velocity.y += gravity
 
         this.draw()
-        this.animationManager.play()
     }
 }
