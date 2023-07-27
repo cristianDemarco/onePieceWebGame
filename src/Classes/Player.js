@@ -36,7 +36,6 @@ class Player extends Fighter {
 
     draw(){
         // Animations
-        console.log(this.animationManager.animation)
         let moveset = Object.values(this.moveset)
 
         moveset.forEach(element => {
@@ -62,18 +61,18 @@ class Player extends Fighter {
     attack(){
         if(this.moveset["ATTK1"].isAttacking && this.animationManager.animation != "stamp"){
             this.animation = this.animationManager.setAnimation(
-                "stamp", this.facingDirection, true, "ATTK1", this.position, this.width, this.height, this.scale
+                "stamp", this.facingDirection, "ATTK1", this.position, this.width, this.height, this.scale
             )
         }
         
         else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "pistol"){
             this.animation = this.animationManager.setAnimation(
-                "pistol", this.facingDirection, true, "ATTK2", this.position, this.width, this.height, this.scale
+                "pistol", this.facingDirection, "ATTK2", this.position, this.width, this.height, this.scale
             )
             
         } else if(this.moveset["ATTK3"].isAttacking && this.animationManager.animation != "gatling"){
             this.animation = this.animationManager.setAnimation(
-                "gatling", this.facingDirection, true, "ATTK3", this.position, this.width, this.height, this.scale
+                "gatling", this.facingDirection, "ATTK3", this.position, this.width, this.height, this.scale
             )
         }
     }
@@ -88,19 +87,19 @@ class Player extends Fighter {
     animate(){
         if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
             this.animation = this.animationManager.setAnimation(
-                "standing", this.facingDirection, false, null, this.position, this.width, this.height, this.scale
+                "standing", this.facingDirection, null, this.position, this.width, this.height, this.scale
             )
         }
 
         if(this.velocity.x != 0 && this.velocity.y === 0 && this.animationManager.animation != "running"){
             this.animation = this.animationManager.setAnimation(
-                "running", this.facingDirection, false, null, this.position, this.width, this.height, this.scale
+                "running", this.facingDirection, null, this.position, this.width, this.height, this.scale
             )
         }
 
         if(this.velocity.y != 0 && this.animationManager.animation != "jumping"){
             this.animation = this.animationManager.setAnimation(
-                "jumping", this.facingDirection, false, null, this.position, this.width, this.height, this.scale
+                "jumping", this.facingDirection, null, this.position, this.width, this.height, this.scale
             )
         }
     }
@@ -108,25 +107,17 @@ class Player extends Fighter {
     drawAttackBox(){
         c.strokeStyle = "green"
         c.strokeRect(this.position.x, this.position.y, this.width, this.height)
-        
-        if(this.facingDirection == "right"){
-            c.strokeStyle = "red"
-            c.strokeRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
-        }else{
-            c.strokeStyle = "red"
-            c.strokeRect(this.attackBox.position.x + this.attackBox.width - 50, this.attackBox.position.y, -this.attackBox.width, this.attackBox.height)
-        }
     }
 
     attackCollision(){
         if(this.facingDirection === "right"){
-            return (this.attackBox.position.x + this.attackBox.width >= enemy.position.x) &&
-            this.attackBox.position.y >= enemy.position.y &&
-            this.attackBox.position.x + this.attackBox.width <= enemy.position.x + enemy.width
+            return (this.position.x + this.width >= enemy.position.x) &&
+            this.position.y >= enemy.position.y &&
+            this.position.x + this.width <= enemy.position.x + enemy.width
         }else{
-            return (this.attackBox.position.x + this.width - this.attackBox.width >= enemy.position.x) &&
-            this.attackBox.position.y >= enemy.position.y &&
-            this.attackBox.position.x + this.width - this.attackBox.width <= enemy.position.x + enemy.width
+            return (this.position.x + this.width - this.width >= enemy.position.x) &&
+            this.position.y >= enemy.position.y &&
+            this.position.x + this.width - this.width <= enemy.position.x + enemy.width
         }
     }
 

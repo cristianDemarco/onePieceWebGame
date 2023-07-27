@@ -103,10 +103,6 @@ function checkIfKeysPressed(){
         player.moveset["ATTK1"].isAttacking = true
 
         setTimeout(() => player.moveset["ATTK1"].canAttack = true, 2000)
-            
-        if(player.attackCollision()){
-            enemy.health -= 10
-        }
 
     } else if (keys.e.pressed && player.moveset["ATTK2"].canAttack){
         player.resetAttacks()
@@ -114,19 +110,12 @@ function checkIfKeysPressed(){
         player.moveset["ATTK2"].isAttacking = true
 
         setTimeout(() => player.moveset["ATTK2"].canAttack = true, 5000)
-            
-        if(player.attackCollision()){
-            enemy.health -= 30
-        }
+
     } else if (keys.c.pressed && player.moveset["ATTK3"].canAttack){
         player.resetAttacks()
         player.moveset["ATTK3"].canAttack = false
         player.moveset["ATTK3"].isAttacking = true
 
         setTimeout(() => player.moveset["ATTK3"].canAttack = true, 10000)
-            
-        if(player.attackCollision()){
-            enemy.health -= 70
-        }
     }
 }

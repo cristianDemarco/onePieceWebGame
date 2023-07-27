@@ -16,7 +16,7 @@ class Enemy extends Fighter{
     draw(){
         if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
             this.animation = this.animationManager.setAnimation(
-                "standing", this.facingDirection, false, null, this.position, this.width, this.height, this.scale
+                "standing", this.facingDirection, null, this.position, this.width, this.height, this.scale
             )
         }
 

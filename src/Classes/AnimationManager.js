@@ -5,10 +5,10 @@ class AnimationManager {
         this.isPlayerOrEnemy = isPlayerOrEnemy
     }
 
-    setAnimation(animation, facingDirection, isAttack, ATTK, position, width, height, scale){
+    setAnimation(animation, facingDirection, ATTK, position, width, height, scale){
         this.animation = animation
         this.facingDirection = facingDirection
-        this.isAttackOrAnimation = isAttack === true ? "attacks" : "spriteSheets"
+        this.isAttackOrAnimation = typeof ATTK === "string" ? "attacks" : "spriteSheets"
         this.ATTK = ATTK
         this.position = position
         this.width = width
@@ -18,6 +18,7 @@ class AnimationManager {
         this.maxFrames = this.animationData["maxFrames"]
         this.frameRate = this.animationData["frameRate"]
         this.spriteSheet = this.animationData["spriteSheet"]
+        this.damage = this.animationData["damage"] / this.maxFrames
         this.leftSpriteSheetImage = createImage("../assets/" + this.character + "SpriteSheetLeft.png")
         this.rightSpriteSheetImage = createImage("../assets/" + this.character + "SpriteSheetRight.png")
         this.frameCount = 0
@@ -29,28 +30,43 @@ class AnimationManager {
 
         if(this.facingDirection === "left"){
             c.drawImage(this.leftSpriteSheetImage,
-                        sprite.x, sprite.y,
-                        sprite.w, sprite.h,
-                        this.position.x, this.position.y,
-                        sprite.w * this.scale, sprite.h * this.scale)
+                        sprite.x,
+                        sprite.y,
+                        sprite.w,
+                        sprite.h,
+                        this.position.x,
+                        this.position.y,
+                        sprite.w * this.scale,
+                        sprite.h * this.scale)
         }else{
             c.drawImage(this.rightSpriteSheetImage,
-                        this.rightSpriteSheetImage.width - sprite.x, sprite.y,
-                        -sprite.w, sprite.h,
-                        this.position.x, this.position.y,
-                        sprite.w * this.scale, sprite.h * this.scale)
+                        this.rightSpriteSheetImage.width - sprite.x,
+                        sprite.y,
+                        -sprite.w,
+                        sprite.h,
+                        this.position.x,
+                        this.position.y,
+                        sprite.w * this.scale,
+                        sprite.h * this.scale)
             }
 
         if(this.isPlayerOrEnemy === "player"){
             player.width = sprite.w * this.scale
-            player.attackBox.width = sprite.w * this.scale + 50
-        }else{
-            enemy.width = sprite.w * this.scale
-            enemy.attackBox.width = sprite.w * this.scale + 50
         }
+        else{
+            enemy.width = sprite.w * this.scale
+        }
+
 
         if(this.frameCount % this.frameRate === 0){
             this.currentFrame++
+
+        
+        //check if its player
+        if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
+            enemy.health -= this.damage
+        }
+
             if(this.currentFrame === this.maxFrames) {
                 this.currentFrame = 0
 

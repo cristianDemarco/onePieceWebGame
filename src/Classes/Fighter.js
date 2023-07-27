@@ -11,11 +11,6 @@ class Fighter {
         this.position.y = canvas.height - groundOffset- this.height
 
         this.facingDirection = null
-        this.attackBox = {
-            position : this.position,
-            width : this.width,
-            height : this.height
-        }
         
         this.maxHealth = null
         this.health = this.maxHealth

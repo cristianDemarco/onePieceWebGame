@@ -4,6 +4,7 @@ const charactersData = {
                 "stamp" : {
                     "maxFrames": 7,
                     "frameRate": 10,
+                    "damage" : 10,
                     "spriteSheet": [
                         {
                             "x": "9",
@@ -52,6 +53,7 @@ const charactersData = {
                 "pistol" : {
                     "maxFrames": 11,
                     "frameRate": 8,
+                    "damage" : 30,
                     "spriteSheet": [
                         {
                             "x": "4",
@@ -124,6 +126,7 @@ const charactersData = {
                 "gatling" : {
                     "maxFrames": 11,
                     "frameRate": 10,
+                    "damage" : 70,
                     "spriteSheet": [
                         {
                             "x": "10",
