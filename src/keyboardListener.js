@@ -16,6 +16,9 @@ const keys = {
     },
     "c" : {
         pressed : false
+    },
+    "x" : {
+        pressed : false
     }
 }
 
@@ -52,6 +55,11 @@ addEventListener("keydown", (event) => {
             keys.c.pressed = true
             lastKey = "c"
             break
+        
+        case "x":
+            keys.x.pressed = true
+            lastKey = "x"
+            break
 }
 })
 
@@ -77,8 +85,8 @@ addEventListener("keyup", (event) => {
             keys.e.pressed = false
             break
 
-        case "c":
-            keys.c.pressed = false
+        case "x":
+            keys.x.pressed = false
             break
     }
 })
@@ -117,5 +125,11 @@ function checkIfKeysPressed(){
         player.moveset["ATTK3"].isAttacking = true
 
         setTimeout(() => player.moveset["ATTK3"].canAttack = true, 10000)
+    } else if (keys.x.pressed && player.moveset["ATTK4"].canAttack){
+        player.resetAttacks()
+        player.moveset["ATTK4"].canAttack = false
+        player.moveset["ATTK4"].isAttacking = true
+
+        setTimeout(() => player.moveset["ATTK4"].canAttack = true, 12000)
     }
 }

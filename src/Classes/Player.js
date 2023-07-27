@@ -74,6 +74,10 @@ class Player extends Fighter {
             this.animation = this.animationManager.setAnimation(
                 "gatling", this.facingDirection, "ATTK3", this.position, this.width, this.height, this.scale
             )
+        } else if(this.moveset["ATTK4"].isAttacking && this.animationManager.animation != "bazooka"){
+            this.animation = this.animationManager.setAnimation(
+                "bazooka", this.facingDirection, "ATTK4", this.position, this.width, this.height, this.scale
+            )
         }
     }
 
