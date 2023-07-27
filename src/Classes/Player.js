@@ -59,13 +59,13 @@ class Player extends Fighter {
     }
 
     attack(){
+        console.log(this.animationManager.animation)
         if(this.moveset["ATTK1"].isAttacking && this.animationManager.animation != "stamp"){
             this.animation = this.animationManager.setAnimation(
                 "stamp", this.facingDirection, "ATTK1", this.position, this.width, this.height, this.scale
             )
-        }
-        
-        else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "pistol"){
+            
+        } else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "pistol"){
             this.animation = this.animationManager.setAnimation(
                 "pistol", this.facingDirection, "ATTK2", this.position, this.width, this.height, this.scale
             )
@@ -74,6 +74,7 @@ class Player extends Fighter {
             this.animation = this.animationManager.setAnimation(
                 "gatling", this.facingDirection, "ATTK3", this.position, this.width, this.height, this.scale
             )
+
         } else if(this.moveset["ATTK4"].isAttacking && this.animationManager.animation != "bazooka"){
             this.animation = this.animationManager.setAnimation(
                 "bazooka", this.facingDirection, "ATTK4", this.position, this.width, this.height, this.scale

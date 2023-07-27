@@ -6,7 +6,7 @@ const keys = {
         pressed : false
     },
     "w" : {
-        pressed : false,
+        pressed : false
     },
     "q" : {
         pressed : false
@@ -85,6 +85,10 @@ addEventListener("keyup", (event) => {
             keys.e.pressed = false
             break
 
+        case "c":
+            keys.c.pressed = false
+            break
+
         case "x":
             keys.x.pressed = false
             break
@@ -124,7 +128,8 @@ function checkIfKeysPressed(){
         player.moveset["ATTK3"].canAttack = false
         player.moveset["ATTK3"].isAttacking = true
 
-        setTimeout(() => player.moveset["ATTK3"].canAttack = true, 10000)
+        setTimeout(() => player.moveset["ATTK3"].canAttack = true, 2000)
+
     } else if (keys.x.pressed && player.moveset["ATTK4"].canAttack){
         player.resetAttacks()
         player.moveset["ATTK4"].canAttack = false
