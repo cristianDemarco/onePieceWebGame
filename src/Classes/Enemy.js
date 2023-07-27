@@ -3,6 +3,7 @@ class Enemy extends Fighter{
 
         super(position, velocity, character, scale)
 
+        this.position.x = canvas.width - mapWidth(200) - this.width
         this.facingDirection = "left"
         this.maxHealth = 1000,
         this.health = this.maxHealth
@@ -34,12 +35,12 @@ class Enemy extends Fighter{
 
     drawHealthbar(){
         c.fillStyle = "black"
-        c.fillRect(canvas.width - 100, 50, -750, 75)
+        c.fillRect(canvas.width - mapWidth(100), mapHeight(50), mapWidth(-760), mapHeight(75))
 
         c.fillStyle = "red"
-        c.fillRect(canvas.width - 110, 60, -730, 55)
+        c.fillRect(canvas.width - mapWidth(110), mapHeight(60), mapWidth(-740), mapHeight(55))
         c.fillStyle = "green"
-        c.fillRect(canvas.width - 110, 60, (-730 * this.health)/this.maxHealth, 55)
+        c.fillRect(canvas.width - mapWidth(110), mapHeight(60), mapWidth((-740 * this.health)/this.maxHealth), mapHeight(55))
     }
 
     fightingAlgorithm(){

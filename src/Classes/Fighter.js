@@ -8,7 +8,7 @@ class Fighter {
         this.width = charactersData[this.character]["spriteSheets"]["standing"]["spriteSheet"][0]["w"] * this.scale
         this.height = charactersData[this.character]["spriteSheets"]["standing"]["spriteSheet"][0]["h"] * this.scale
         
-        this.position.y = canvas.height - groundOffset- this.height
+        this.position.y = canvas.height - groundOffset - this.height
 
         this.facingDirection = null
         

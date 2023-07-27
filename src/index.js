@@ -5,10 +5,10 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 const gravity = 0.2
-const groundOffset = 50
+const groundOffset = mapHeight(50)
 const player = new Player ({
     position : {
-        x : 200,
+        x : mapWidth(200),
         y : undefined
     },
 
@@ -21,7 +21,7 @@ const player = new Player ({
 
 const enemy = new Enemy ({
     position : {
-        x : 1400,
+        x : undefined,
         y : undefined
     },
 

@@ -123,12 +123,12 @@ class Player extends Fighter {
 
     drawHealthbar(){
         c.fillStyle = "black"
-        c.fillRect(100, 50, 750, 75)
+        c.fillRect(mapWidth(100), mapHeight(50), mapWidth(760), mapHeight(75))
 
         c.fillStyle = "red"
-        c.fillRect(110, 60, 730, 55)
+        c.fillRect(mapWidth(110), mapHeight(60), mapWidth(740), mapHeight(55))
         c.fillStyle = "green"
-        c.fillRect(110, 60, (730 * this.health)/this.maxHealth, 55)
+        c.fillRect(mapWidth(110), mapHeight(60), mapWidth((740 * this.health)/this.maxHealth), mapHeight(55))
     }
 
     update(){
