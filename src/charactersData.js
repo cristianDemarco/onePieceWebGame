@@ -414,6 +414,40 @@ const charactersData = {
         
     },
     "arlong": {
+        "attacks" : {
+            "bite" : {
+                "maxFrames": 4,
+                "frameRate": 10,
+                "damage" : 150,
+                "spriteSheet": [
+                    {
+                        "x": "2",
+                        "y": "326",
+                        "w": "58",
+                        "h": "66"
+                    },
+                    {
+                        "x": "64",
+                        "y": "332",
+                        "w": "77",
+                        "h": "60"
+                    },
+                    {
+                        "x": "144",
+                        "y": "377",
+                        "w": "77",
+                        "h": "55"
+                    },
+                    {
+                        "x": "224",
+                        "y": "339",
+                        "w": "77",
+                        "h": "53"
+                    }
+                ]
+            }
+        },
+
         "spriteSheets" : {
             "standing": {
                     "maxFrames" : 2,

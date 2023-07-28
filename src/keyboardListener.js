@@ -97,6 +97,7 @@ addEventListener("keyup", (event) => {
 
 function checkIfKeysPressed(){
     player.velocity.x = 0
+    player.resetAttacks()
 
     if(keys.a.pressed && lastKey === "a"){
         player.facingDirection = "left"
@@ -110,28 +111,24 @@ function checkIfKeysPressed(){
         setTimeout(() => player.canJump = true, 2000)
         
     } else if (keys.q.pressed && player.moveset["ATTK1"].canAttack){
-        player.resetAttacks()
         player.moveset["ATTK1"].canAttack = false
         player.moveset["ATTK1"].isAttacking = true
 
         setTimeout(() => player.moveset["ATTK1"].canAttack = true, 2000)
 
     } else if (keys.e.pressed && player.moveset["ATTK2"].canAttack){
-        player.resetAttacks()
         player.moveset["ATTK2"].canAttack = false
         player.moveset["ATTK2"].isAttacking = true
 
         setTimeout(() => player.moveset["ATTK2"].canAttack = true, 5000)
 
     } else if (keys.c.pressed && player.moveset["ATTK3"].canAttack){
-        player.resetAttacks()
         player.moveset["ATTK3"].canAttack = false
         player.moveset["ATTK3"].isAttacking = true
 
-        setTimeout(() => player.moveset["ATTK3"].canAttack = true, 2000)
+        setTimeout(() => player.moveset["ATTK3"].canAttack = true, 10000)
 
     } else if (keys.x.pressed && player.moveset["ATTK4"].canAttack){
-        player.resetAttacks()
         player.moveset["ATTK4"].canAttack = false
         player.moveset["ATTK4"].isAttacking = true
 

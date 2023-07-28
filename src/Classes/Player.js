@@ -13,25 +13,6 @@ class Player extends Fighter {
             character : this.character,
             isPlayerOrEnemy : "player"
         })
-
-        this.moveset = {
-            ATTK1 : {
-                isAttacking : false,
-                canAttack : true
-            },
-            ATTK2 : {
-                isAttacking : false,
-                canAttack : true
-            },
-            ATTK3 : {
-                isAttacking : false,
-                canAttack : true
-            },
-            ATTK4 : {
-                isAttacking : false,
-                canAttack : true
-            },
-        }
     }
 
     draw(){
@@ -59,12 +40,11 @@ class Player extends Fighter {
     }
 
     attack(){
-        console.log(this.animationManager.animation)
         if(this.moveset["ATTK1"].isAttacking && this.animationManager.animation != "stamp"){
             this.animation = this.animationManager.setAnimation(
                 "stamp", this.facingDirection, "ATTK1", this.position, this.width, this.height, this.scale
             )
-            
+
         } else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "pistol"){
             this.animation = this.animationManager.setAnimation(
                 "pistol", this.facingDirection, "ATTK2", this.position, this.width, this.height, this.scale

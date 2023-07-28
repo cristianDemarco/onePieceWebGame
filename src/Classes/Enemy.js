@@ -21,12 +21,6 @@ class Enemy extends Fighter{
             )
         }
 
-        //c.fillStyle = "blue"
-        //c.fillRect(this.position.x, this.position.y, this.width, this.height)
-
-        //c.fillStyle = "green"
-        //c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
-
         this.animationManager.facingDirection = this.facingDirection
         this.drawHealthbar()
         this.animationManager.play()

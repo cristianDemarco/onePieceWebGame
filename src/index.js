@@ -29,8 +29,7 @@ const enemy = new Enemy ({
         x : 0,
         y : 0
     },
-    character : "arlong",
-    scale : 3
+    character : "arlong"
 })
 
 function animate(){
@@ -38,8 +37,8 @@ function animate(){
     c.clearRect(0, 0, canvas.width, canvas.height)
     c.drawImage(createImage("../assets/eniesLobbyGameSprite.png"), 0, 0)
 
-    player.update()
     enemy.update()
+    player.update()
 
     checkIfKeysPressed()
 }

@@ -14,6 +14,15 @@ class Fighter {
         
         this.maxHealth = null
         this.health = this.maxHealth
+
+        this.moveset = {}
+
+        for (let i = 1; i <= 4; i++){
+            this.moveset[`ATTK${i}`] = { 
+                isAttacking : false,
+                canAttack : true
+            } 
+        }
     }
 
     draw(){
