@@ -4,6 +4,7 @@ const charactersData = {
                 "stamp" : {
                     "maxFrames": 7,
                     "frameRate": 10,
+                    "cooldown" : 2000,
                     "damage" : 20,
                     "spriteSheet": [
                         {
@@ -53,6 +54,7 @@ const charactersData = {
                 "pistol" : {
                     "maxFrames": 11,
                     "frameRate": 8,
+                    "cooldown" : 5000,
                     "damage" : 40,
                     "spriteSheet": [
                         {
@@ -126,6 +128,7 @@ const charactersData = {
                 "gatling" : {
                     "maxFrames": 11,
                     "frameRate": 10,
+                    "cooldown" : 10000,
                     "damage" : 80,
                     "spriteSheet": [
                         {
@@ -199,6 +202,7 @@ const charactersData = {
                 "bazooka" : {
                     "maxFrames": 8,
                     "frameRate": 15,
+                    "cooldown" : 12000,
                     "damage" : 60,
                     "spriteSheet": [
                         {

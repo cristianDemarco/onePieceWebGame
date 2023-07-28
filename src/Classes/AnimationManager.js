@@ -17,12 +17,17 @@ class AnimationManager {
         this.animationData = charactersData[this.character][this.isAttackOrAnimation][this.animation]
         this.maxFrames = this.animationData["maxFrames"]
         this.frameRate = this.animationData["frameRate"]
-        this.spriteSheet = this.animationData["spriteSheet"]
+        this.cooldown = this.animationData["cooldown"]
         this.damage = this.animationData["damage"] / this.maxFrames
+        this.spriteSheet = this.animationData["spriteSheet"]
         this.leftSpriteSheetImage = createImage(`../assets/${this.character}LeftSpritesheet.png`)
         this.rightSpriteSheetImage = createImage(`../assets/${this.character}RightSpritesheet.png`) 
         this.frameCount = 0
         this.currentFrame = 0
+
+        if(this.isPlayer){
+            setTimeout(() => player.moveset[this.ATTK].canAttack = true, this.cooldown)
+        }
     }
 
     play(){

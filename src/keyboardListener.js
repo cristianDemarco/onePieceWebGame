@@ -114,8 +114,6 @@ function checkIfKeysPressed(){
         player.moveset["ATTK1"].canAttack = false
         player.moveset["ATTK1"].isAttacking = true
 
-        setTimeout(() => player.moveset["ATTK1"].canAttack = true, 2000)
-
     } else if (keys.e.pressed && player.moveset["ATTK2"].canAttack){
         player.moveset["ATTK2"].canAttack = false
         player.moveset["ATTK2"].isAttacking = true
