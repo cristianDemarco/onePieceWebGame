@@ -11,7 +11,7 @@ class Player extends Fighter {
 
         this.animationManager = new AnimationManager({
             character : this.character,
-            isPlayerOrEnemy : "player"
+            isPlayer : "player"
         })
     }
 

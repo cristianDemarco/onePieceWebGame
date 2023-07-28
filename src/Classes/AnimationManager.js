@@ -1,8 +1,8 @@
 class AnimationManager {
-    constructor({character, isPlayerOrEnemy}){
+    constructor({character, isPlayer}){
         this.character = character
+        this.isPlayer = isPlayer === "player" ? true : false
         this.currentFrame = 0
-        this.isPlayerOrEnemy = isPlayerOrEnemy
     }
 
     setAnimation(animation, facingDirection, ATTK, position, width, height, scale){
@@ -50,28 +50,29 @@ class AnimationManager {
                         sprite.h * this.scale)
             }
 
-        if(this.isPlayerOrEnemy === "player"){
-            player.width = sprite.w * this.scale
-        }
-        else{
-            enemy.width = sprite.w * this.scale
-        }
-
-
         if(this.frameCount % this.frameRate === 0){
             this.currentFrame++
 
-        
-        //check if its player
-        if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
-            enemy.health -= this.damage
+        if(this.isPlayer){
+            player.width = sprite.w * this.scale
+
+            if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
+                enemy.health -= this.damage
+            }
+        }
+        else{
+            enemy.width = sprite.w * this.scale
+
+            if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
+                player.health -= this.damage
+            }
         }
 
             if(this.currentFrame === this.maxFrames) {
                 this.currentFrame = 0
 
                 if(this.isAttackOrAnimation === "attacks") {
-                    if(this.isPlayerOrEnemy === "player"){
+                    if(this.isPlayer){
                         player.moveset[this.ATTK].isAttacking = false
                         player.isAttacking = false
                     }
