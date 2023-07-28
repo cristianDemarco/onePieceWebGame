@@ -19,8 +19,8 @@ class AnimationManager {
         this.frameRate = this.animationData["frameRate"]
         this.spriteSheet = this.animationData["spriteSheet"]
         this.damage = this.animationData["damage"] / this.maxFrames
-        this.leftSpriteSheetImage = createImage("../assets/" + this.character + "SpriteSheetLeft.png")
-        this.rightSpriteSheetImage = createImage("../assets/" + this.character + "SpriteSheetRight.png")
+        this.leftSpriteSheetImage = createImage(`../assets/${this.character}LeftSpritesheet.png`)
+        this.rightSpriteSheetImage = createImage(`../assets/${this.character}RightSpritesheet.png`) 
         this.frameCount = 0
         this.currentFrame = 0
     }
