@@ -35,7 +35,6 @@ class Player extends Fighter {
         this.animationManager.facingDirection = this.facingDirection
         
         this.drawAttackBox()
-        this.drawHealthbar()
         this.animationManager.play()
     }
 
@@ -106,7 +105,7 @@ class Player extends Fighter {
         }
     }
 
-    drawHealthbar(){
+    drawHealthBar(){
         c.fillStyle = "black"
         c.fillRect(mapWidth(100), mapHeight(50), mapWidth(760), mapHeight(75))
 

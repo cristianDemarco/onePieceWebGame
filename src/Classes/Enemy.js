@@ -22,12 +22,11 @@ class Enemy extends Fighter{
         }
 
         this.animationManager.facingDirection = this.facingDirection
-        this.drawHealthbar()
         this.animationManager.play()
         
     }
 
-    drawHealthbar(){
+    drawHealthBar(){
         c.fillStyle = "black"
         c.fillRect(canvas.width - mapWidth(100), mapHeight(50), mapWidth(-760), mapHeight(75))
 

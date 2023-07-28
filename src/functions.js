@@ -12,3 +12,8 @@ function mapWidth(num){
 function mapHeight(num){
     return (canvas.height * num)/948
 }
+
+function drawFightingHUD(){
+    player.drawHealthBar()
+    enemy.drawHealthBar()
+}

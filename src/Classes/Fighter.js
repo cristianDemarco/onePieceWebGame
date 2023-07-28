@@ -28,6 +28,9 @@ class Fighter {
     draw(){
     }
 
+    drawHealthBar(){
+    }
+
     update(){
     }
 }
