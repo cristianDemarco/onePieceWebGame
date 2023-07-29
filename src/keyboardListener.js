@@ -118,18 +118,12 @@ function checkIfKeysPressed(){
         player.moveset["ATTK2"].canAttack = false
         player.moveset["ATTK2"].isAttacking = true
 
-        setTimeout(() => player.moveset["ATTK2"].canAttack = true, 5000)
-
     } else if (keys.c.pressed && player.moveset["ATTK3"].canAttack){
         player.moveset["ATTK3"].canAttack = false
         player.moveset["ATTK3"].isAttacking = true
 
-        setTimeout(() => player.moveset["ATTK3"].canAttack = true, 10000)
-
     } else if (keys.x.pressed && player.moveset["ATTK4"].canAttack){
         player.moveset["ATTK4"].canAttack = false
         player.moveset["ATTK4"].isAttacking = true
-
-        setTimeout(() => player.moveset["ATTK4"].canAttack = true, 12000)
     }
 }

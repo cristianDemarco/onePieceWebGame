@@ -4,7 +4,7 @@ class Fighter {
         this.position = position
         this.velocity = velocity
         this.character = character
-        this.scale = scale
+        this.scale = mapHeight(scale)
         this.width = charactersData[this.character]["spriteSheets"]["standing"]["spriteSheet"][0]["w"] * this.scale
         this.height = charactersData[this.character]["spriteSheets"]["standing"]["spriteSheet"][0]["h"] * this.scale
         

@@ -25,8 +25,8 @@ class AnimationManager {
         this.frameCount = 0
         this.currentFrame = 0
 
-        if(this.isPlayer){
-            setTimeout(() => player.moveset[this.ATTK].canAttack = true, this.cooldown)
+        if(this.isPlayer && this.isAttackOrAnimation === "attacks"){
+            setTimeout(() => player.moveset[ATTK].canAttack = true, this.cooldown)
         }
     }
 
