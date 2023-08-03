@@ -23,8 +23,7 @@ class AnimationManager {
         this.isFlipped = this.animationData["isFlipped"]
         this.spriteSheet = this.animationData["spriteSheet"]
         this.initialWidth = this.animationData["spriteSheet"][0].w
-        this.leftSpriteSheetImage = createImage(`../assets/${this.character}LeftSpritesheet.png`)
-        this.rightSpriteSheetImage = createImage(`../assets/${this.character}RightSpritesheet.png`) 
+        this.spriteSheetImage = createImage(`../assets/${this.character}Spritesheet.png`)
         this.frameCount = 0
         this.currentFrame = 0
         this.offsetx = 0
@@ -54,7 +53,7 @@ class AnimationManager {
 
         if(this.facingDirection === "left"){
 
-            c.drawImage(this.leftSpriteSheetImage,
+            c.drawImage(this.spriteSheetImage,
                         sprite.x,
                         sprite.y,
                         sprite.w,
@@ -69,7 +68,7 @@ class AnimationManager {
             c.save()
             c.scale(-1, 1)
 
-            c.drawImage(this.leftSpriteSheetImage,
+            c.drawImage(this.spriteSheetImage,
                         sprite.x,
                         sprite.y,
                         sprite.w,
