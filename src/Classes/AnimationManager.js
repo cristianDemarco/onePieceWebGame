@@ -3,6 +3,7 @@ class AnimationManager {
         this.character = character
         this.isPlayer = isPlayer === "player" ? true : false
         this.currentFrame = 0
+        this.width = 0
     }
 
     setAnimation(animation, facingDirection, ATTK, position, width, height, scale){
@@ -21,13 +22,13 @@ class AnimationManager {
         this.damage = this.animationData["damage"] / this.maxFrames
         this.isFlipped = this.animationData["isFlipped"]
         this.spriteSheet = this.animationData["spriteSheet"]
+        this.initialWidth = this.animationData["spriteSheet"][0].w
         this.leftSpriteSheetImage = createImage(`../assets/${this.character}LeftSpritesheet.png`)
         this.rightSpriteSheetImage = createImage(`../assets/${this.character}RightSpritesheet.png`) 
         this.frameCount = 0
         this.currentFrame = 0
         this.offsetx = 0
-        this.x = 0
-        this.w
+        this.flipSign = 1
 
         if(this.isPlayer && this.isAttackOrAnimation === "attacks"){
             setTimeout(() => player.moveset[ATTK].canAttack = true, this.cooldown)
@@ -35,7 +36,21 @@ class AnimationManager {
     }
 
     play(){
-        let sprite = this.spriteSheet[this.currentFrame]
+        const sprite = this.spriteSheet[this.currentFrame]
+
+        this.offsetx = 0
+        this.flipSign = 1
+
+        if(this.facingDirection === this.isFlipped){
+            this.flipSign = -1
+
+            if(this.facingDirection === "left"){
+                this.offsetx = this.initialWidth * this.scale
+            } else {
+                this.offsetx = -this.initialWidth * this.scale
+            }
+
+        }
 
         if(this.facingDirection === "left"){
 
@@ -44,27 +59,27 @@ class AnimationManager {
                         sprite.y,
                         sprite.w,
                         sprite.h,
-                        this.position.x,
+                        this.position.x + this.offsetx,
                         this.position.y,
-                        sprite.w * this.scale,
+                        sprite.w * this.flipSign * this.scale,
                         sprite.h * this.scale
             )
-
         } else {
 
             c.save()
             c.scale(-1, 1)
 
             c.drawImage(this.leftSpriteSheetImage,
-                        sprite.x + sprite.w,
+                        sprite.x,
                         sprite.y,
-                        -sprite.w,
+                        sprite.w,
                         sprite.h,
-                        -this.position.x - sprite.w * this.scale,
+                        -this.position.x - sprite.w * this.flipSign * this.scale + this.offsetx,
                         this.position.y,
-                        sprite.w * this.scale,
+                        sprite.w * this.scale * this.flipSign,
                         sprite.h * this.scale
             )
+
             c.restore()
         }
 
@@ -73,14 +88,14 @@ class AnimationManager {
             this.currentFrame++
 
         if(this.isPlayer){
-            player.width = sprite.w * this.scale
+            player.width = (sprite.w * this.flipSign) * this.scale
 
             if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
                 enemy.health -= this.damage
             }
         }
         else{
-            enemy.width = sprite.w * this.scale
+            enemy.width = (sprite.w * this.flipSign) * this.scale
 
             if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
                 player.health -= this.damage
