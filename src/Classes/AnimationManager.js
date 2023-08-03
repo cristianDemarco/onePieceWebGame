@@ -19,11 +19,15 @@ class AnimationManager {
         this.frameRate = this.animationData["frameRate"]
         this.cooldown = this.animationData["cooldown"]
         this.damage = this.animationData["damage"] / this.maxFrames
+        this.isFlipped = this.animationData["isFlipped"]
         this.spriteSheet = this.animationData["spriteSheet"]
         this.leftSpriteSheetImage = createImage(`../assets/${this.character}LeftSpritesheet.png`)
         this.rightSpriteSheetImage = createImage(`../assets/${this.character}RightSpritesheet.png`) 
         this.frameCount = 0
         this.currentFrame = 0
+        this.offsetx = 0
+        this.x = 0
+        this.w
 
         if(this.isPlayer && this.isAttackOrAnimation === "attacks"){
             setTimeout(() => player.moveset[ATTK].canAttack = true, this.cooldown)
@@ -34,6 +38,7 @@ class AnimationManager {
         let sprite = this.spriteSheet[this.currentFrame]
 
         if(this.facingDirection === "left"){
+
             c.drawImage(this.leftSpriteSheetImage,
                         sprite.x,
                         sprite.y,
@@ -42,18 +47,27 @@ class AnimationManager {
                         this.position.x,
                         this.position.y,
                         sprite.w * this.scale,
-                        sprite.h * this.scale)
-        }else{
-            c.drawImage(this.rightSpriteSheetImage,
-                        this.rightSpriteSheetImage.width - sprite.x,
+                        sprite.h * this.scale
+            )
+
+        } else {
+
+            c.save()
+            c.scale(-1, 1)
+
+            c.drawImage(this.leftSpriteSheetImage,
+                        sprite.x + sprite.w,
                         sprite.y,
                         -sprite.w,
                         sprite.h,
-                        this.position.x,
+                        -this.position.x - sprite.w * this.scale,
                         this.position.y,
                         sprite.w * this.scale,
-                        sprite.h * this.scale)
-            }
+                        sprite.h * this.scale
+            )
+            c.restore()
+        }
+
 
         if(this.frameCount % this.frameRate === 0){
             this.currentFrame++

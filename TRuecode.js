@@ -6,7 +6,7 @@ const charactersData = {
                 frameRate: 10,
                 cooldown: 2000,
                 damage: 20,
-                isFlipped : "left",
+                isFlipped : false,
                 spriteSheet: [
                     {
                         x: 9,
@@ -57,7 +57,7 @@ const charactersData = {
                 frameRate: 8,
                 cooldown: 5000,
                 damage: 40,
-                isFlipped : "left",
+                isFlipped : false,
                 spriteSheet: [
                     {
                         x: 4,
@@ -132,7 +132,7 @@ const charactersData = {
                 frameRate: 10,
                 cooldown: 10000,
                 damage: 80,
-                isFlipped : "left",
+                isFlipped : false,
                 spriteSheet: [
                     {
                         x: 10,
@@ -207,54 +207,54 @@ const charactersData = {
                 frameRate: 15,
                 cooldown: 2000,
                 damage: 60,
-                isFlipped : "right",
+                isFlipped : true,
                 spriteSheet: [
                     {
-                        x: 14,
+                        x: 37,
                         y: 2293,
-                        w: 23,
+                        w: -23,
                         h: 42,
                     },
                     {
-                        x: 48,
+                        x: 83,
                         y: 2288,
-                        w: 35,
+                        w: -35,
                         h: 47,
                     },
                     {
-                        x: 90,
+                        x: 125,
                         y: 2288,
-                        w: 35,
+                        w: -35,
                         h: 48,
                     },
                     {
-                        x: 138,
+                        x: 188,
                         y: 2287,
-                        w: 50,
+                        w: -50,
                         h: 49,
                     },
                     {
-                        x: 195,
+                        x: 279,
                         y: 2289,
-                        w: 84,
+                        w: -84,
                         h: 47,
                     },
                     {
-                        x: 290,
+                        x: 398,
                         y: 2291,
-                        w: 108,
+                        w: -108,
                         h: 44,
                     },
                     {
-                        x: 413,
+                        x: 454,
                         y: 2286,
-                        w: 41,
+                        w: -41,
                         h: 49,
                     },
                     {
-                        x: 463,
+                        x: 516,
                         y: 2282,
-                        w: 53,
+                        w: -53,
                         h: 53,
                     },
                 ],

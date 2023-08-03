@@ -6,7 +6,7 @@ const charactersData = {
                 frameRate: 10,
                 cooldown: 2000,
                 damage: 20,
-                isFlipped : "left",
+                isFlipped : false,
                 spriteSheet: [
                     {
                         x: 9,
@@ -57,7 +57,7 @@ const charactersData = {
                 frameRate: 8,
                 cooldown: 5000,
                 damage: 40,
-                isFlipped : "left",
+                isFlipped : false,
                 spriteSheet: [
                     {
                         x: 4,
@@ -132,7 +132,7 @@ const charactersData = {
                 frameRate: 10,
                 cooldown: 10000,
                 damage: 80,
-                isFlipped : "left",
+                isFlipped : false,
                 spriteSheet: [
                     {
                         x: 10,
@@ -207,7 +207,7 @@ const charactersData = {
                 frameRate: 15,
                 cooldown: 2000,
                 damage: 60,
-                isFlipped : "right",
+                isFlipped : true,
                 spriteSheet: [
                     {
                         x: 14,
