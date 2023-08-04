@@ -15,6 +15,8 @@ class Fighter {
         this.maxHealth = null
         this.health = this.maxHealth
 
+        this.iconImage = createImage(`../assets/icons/${this.character}Icon.png`)
+
         this.moveset = {}
 
         for (let i = 1; i <= 4; i++){
@@ -28,7 +30,7 @@ class Fighter {
     draw(){
     }
 
-    drawHealthBar(){
+    drawHUD(){
     }
 
     update(){

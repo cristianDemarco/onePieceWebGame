@@ -14,6 +14,6 @@ function mapHeight(num){
 }
 
 function drawFightingHUD(){
-    player.drawHealthBar()
-    enemy.drawHealthBar()
+    player.drawHUD()
+    enemy.drawHUD()
 }

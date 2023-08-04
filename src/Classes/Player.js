@@ -105,14 +105,21 @@ class Player extends Fighter {
         }
     }
 
-    drawHealthBar(){
+    drawHUD(){
         c.fillStyle = "black"
-        c.fillRect(mapWidth(100), mapHeight(50), mapWidth(760), mapHeight(75))
+        c.fillRect(mapWidth(220), mapHeight(80), mapWidth(640), mapHeight(75))
 
         c.fillStyle = "red"
-        c.fillRect(mapWidth(110), mapHeight(60), mapWidth(740), mapHeight(55))
+        c.fillRect(mapWidth(230), mapHeight(90), mapWidth(620), mapHeight(55))
         c.fillStyle = "green"
-        c.fillRect(mapWidth(110), mapHeight(60), mapWidth((740 * this.health)/this.maxHealth), mapHeight(55))
+        c.fillRect(mapWidth(230), mapHeight(90), mapWidth((620 * this.health)/this.maxHealth), mapHeight(55))
+
+        c.drawImage(this.iconImage, mapWidth(50), mapHeight(25), mapWidth(180), mapHeight(180))
+        c.save()
+        c.strokeStyle = "black";
+        c.lineWidth = 5;
+        c.strokeRect(mapWidth(50), mapHeight(25), mapWidth(180), mapHeight(180))
+        c.restore()
     }
 
     update(){

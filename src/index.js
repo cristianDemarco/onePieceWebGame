@@ -35,7 +35,7 @@ const enemy = new Enemy ({
 function animate(){
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
-    c.drawImage(createImage("../assets/enieslobbyBackground.png"), 0, 0, canvas.width, canvas.height)
+    c.drawImage(createImage("../assets/backgrounds/enieslobbyBackground.png"), 0, 0, canvas.width, canvas.height)
 
     drawFightingHUD()
 
