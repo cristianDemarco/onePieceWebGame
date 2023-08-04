@@ -9,7 +9,7 @@ class Enemy extends Fighter{
         this.health = this.maxHealth
 
         this.animationManager = new AnimationManager({
-            character : "arlong",
+            character : this.character,
             isPlayer : "enemy"
         })
     }
