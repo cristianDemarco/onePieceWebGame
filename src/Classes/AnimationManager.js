@@ -18,7 +18,7 @@ class AnimationManager {
         this.animationData = charactersData[this.character][this.isAttackOrAnimation][this.animation]
         this.maxFrames = this.animationData["maxFrames"]
         this.frameRate = this.animationData["frameRate"]
-        this.cooldown = this.animationData["cooldown"]
+        const cooldown = this.animationData["cooldown"]
         this.damage = this.animationData["damage"] / this.maxFrames
         this.isFlipped = this.animationData["isFlipped"]
         this.spriteSheet = this.animationData["spriteSheet"]
@@ -30,7 +30,18 @@ class AnimationManager {
         this.flipSign = 1
 
         if(this.isPlayer && this.isAttackOrAnimation === "attacks"){
-            setTimeout(() => player.moveset[ATTK].canAttack = true, this.cooldown)
+            player.moveset[ATTK].angle = 2
+
+            const interval = setInterval(() => {
+                player.moveset[ATTK].angle -= 360 / (cooldown / 1000)
+                console.log(player.moveset[ATTK])
+            }, 1000)
+
+            setTimeout(() => {
+                player.moveset[ATTK].canAttack = true
+                player.moveset[ATTK].angle = 0
+                clearInterval(interval)
+            }, cooldown)
         }
     }
 
@@ -86,20 +97,20 @@ class AnimationManager {
         if(this.frameCount % this.frameRate === 0){
             this.currentFrame++
 
-        if(this.isPlayer){
-            player.width = (sprite.w * this.flipSign) * this.scale
+            if(this.isPlayer){
+                player.width = (sprite.w * this.flipSign) * this.scale
 
-            if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
-                enemy.health -= this.damage
+                if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
+                    enemy.health -= this.damage
+                }
             }
-        }
-        else{
-            enemy.width = (sprite.w * this.flipSign) * this.scale
+            else{
+                enemy.width = (sprite.w * this.flipSign) * this.scale
 
-            if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
-                player.health -= this.damage
+                if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
+                    player.health -= this.damage
+                }
             }
-        }
 
             if(this.currentFrame === this.maxFrames) {
                 this.currentFrame = 0

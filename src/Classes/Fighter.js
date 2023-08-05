@@ -23,7 +23,7 @@ class Fighter {
             this.moveset[`ATTK${i}`] = { 
                 isAttacking : false,
                 canAttack : true
-            } 
+            }
         }
     }
 

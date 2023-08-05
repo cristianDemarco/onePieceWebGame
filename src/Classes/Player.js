@@ -13,13 +13,16 @@ class Player extends Fighter {
             character : this.character,
             isPlayer : "player"
         })
+
+        Object.values(this.moveset).forEach((element, i) => {
+            element["icon"] = createImage(`../assets/movesetIcons/${this.character}ATTK${i + 1}.png`)
+            element["angle"] = 0
+        })
     }
 
     draw(){
         // Animations
-        let moveset = Object.values(this.moveset)
-
-        moveset.forEach(element => {
+        Object.values(this.moveset).forEach(element => {
             if(element.isAttacking){
                 this.isAttacking = true
             }
@@ -89,8 +92,11 @@ class Player extends Fighter {
     }
 
     drawAttackBox(){
-        c.strokeStyle = "green"
+        c.save()
+        c.strokeStyle = "red"
+        c.lineWidth = 3
         c.strokeRect(this.position.x, this.position.y, this.width, this.height)
+        c.restore()
     }
 
     attackCollision(){
@@ -106,20 +112,60 @@ class Player extends Fighter {
     }
 
     drawHUD(){
-        c.fillStyle = "black"
+        //Healthbar
+        c.save()
+        c.strokeStyle = "black"
         c.fillRect(mapWidth(220), mapHeight(80), mapWidth(640), mapHeight(75))
-
-        c.fillStyle = "red"
+        c.strokeStyle = "red"
         c.fillRect(mapWidth(230), mapHeight(90), mapWidth(620), mapHeight(55))
         c.fillStyle = "green"
         c.fillRect(mapWidth(230), mapHeight(90), mapWidth((620 * this.health)/this.maxHealth), mapHeight(55))
+        c.restore()
 
-        c.drawImage(this.iconImage, mapWidth(50), mapHeight(25), mapWidth(180), mapHeight(180))
+        //Icon
         c.save()
-        c.strokeStyle = "black";
-        c.lineWidth = 5;
+        c.drawImage(this.iconImage, mapWidth(50), mapHeight(25), mapWidth(180), mapHeight(180))
+        c.strokeStyle = "black"
+        c.lineWidth = 5
         c.strokeRect(mapWidth(50), mapHeight(25), mapWidth(180), mapHeight(180))
         c.restore()
+
+        //Moveset
+        const y = 235
+        const radius = 40
+        const offsetRadius = 10
+        
+        for(let i = 1; i <= Object.keys(this.moveset).length; i++){
+            const x = 230 + 125 * i
+            
+            //Draw the image
+            c.moveTo(x + radius + offsetRadius, y)
+            c.drawImage(this.moveset[`ATTK${i}`].icon, x - radius, y - radius, radius * 2, radius * 2)
+
+            // Draw the black circle
+            c.save()
+            c.beginPath()
+            c.arc(x, y, radius + offsetRadius, 0, Math.PI * 2)
+            c.lineWidth = 3
+            c.strokeStyle = "black"
+            c.stroke()
+            c.restore()
+
+            // Draw the white translucent circle
+            c.save();
+            c.beginPath();
+            c.arc(
+                x,
+                y,
+                radius + offsetRadius,
+                Math.toRadians(0) * Math.PI, 
+                Math.toRadians(this.moveset[`ATTK${i}`].angle)
+            )
+            
+            c.fillStyle = "rgba(255, 255, 255, 0.6)"
+            c.fill()
+            c.restore()
+        }
     }
 
     update(){

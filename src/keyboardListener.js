@@ -101,12 +101,12 @@ function checkIfKeysPressed(){
 
     if(keys.a.pressed && lastKey === "a"){
         player.facingDirection = "left"
-        player.velocity.x = -10
+        player.velocity.x = -mapWidth(10)
     }else if (keys.d.pressed && lastKey === "d"){
         player.facingDirection = "right"
-        player.velocity.x = 10
+        player.velocity.x = mapWidth(10)
     }else if (keys.w.pressed && lastKey === "w" && player.canJump){
-        player.velocity.y = -11.5
+        player.velocity.y = mapHeight(-11.5)
         player.canJump = false
         setTimeout(() => player.canJump = true, 2000)
         

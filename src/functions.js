@@ -17,3 +17,7 @@ function drawFightingHUD(){
     player.drawHUD()
     enemy.drawHUD()
 }
+
+Math.toRadians = function(degrees) {
+    return degrees * Math.PI/180
+  }
