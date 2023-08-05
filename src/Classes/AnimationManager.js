@@ -23,7 +23,7 @@ class AnimationManager {
         this.isFlipped = this.animationData["isFlipped"]
         this.spriteSheet = this.animationData["spriteSheet"]
         this.initialWidth = this.animationData["spriteSheet"][0].w
-        this.spriteSheetImage = createImage(`../assets/spriteSheets/${this.character}Spritesheet.png`)
+        this.spriteSheetImage = createImage(`../assets/spriteSheets/${this.character}.png`)
         this.frameCount = 0
         this.currentFrame = 0
         this.offsetx = 0

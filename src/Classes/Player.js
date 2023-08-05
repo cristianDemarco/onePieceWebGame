@@ -42,14 +42,14 @@ class Player extends Fighter {
     }
 
     attack(){
-        if(this.moveset["ATTK1"].isAttacking && this.animationManager.animation != "stamp"){
+        if(this.moveset["ATTK1"].isAttacking && this.animationManager.animation != "pistol"){
             this.animation = this.animationManager.setAnimation(
-                "stamp", this.facingDirection, "ATTK1", this.position, this.width, this.height, this.scale
+                "pistol", this.facingDirection, "ATTK1", this.position, this.width, this.height, this.scale
             )
 
-        } else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "pistol"){
+        } else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "stamp"){
             this.animation = this.animationManager.setAnimation(
-                "pistol", this.facingDirection, "ATTK2", this.position, this.width, this.height, this.scale
+                "stamp", this.facingDirection, "ATTK2", this.position, this.width, this.height, this.scale
             )
             
         } else if(this.moveset["ATTK3"].isAttacking && this.animationManager.animation != "gatling"){
@@ -122,7 +122,7 @@ class Player extends Fighter {
         c.fillRect(mapWidth(230), mapHeight(90), mapWidth((620 * this.health)/this.maxHealth), mapHeight(55))
         c.restore()
 
-        //Icon
+        //Character icon
         c.save()
         c.drawImage(this.iconImage, mapWidth(50), mapHeight(25), mapWidth(180), mapHeight(180))
         c.strokeStyle = "black"
@@ -131,12 +131,12 @@ class Player extends Fighter {
         c.restore()
 
         //Moveset
-        const y = 235
+        const y = mapHeight(220)
         const radius = 40
         const offsetRadius = 10
         
         for(let i = 1; i <= Object.keys(this.moveset).length; i++){
-            const x = 230 + 125 * i
+            const x = 200 + 125 * i
             
             //Draw the image
             c.moveTo(x + radius + offsetRadius, y)
@@ -162,7 +162,7 @@ class Player extends Fighter {
                 Math.toRadians(this.moveset[`ATTK${i}`].angle)
             )
             
-            c.fillStyle = "rgba(255, 255, 255, 0.6)"
+            c.fillStyle = "rgba(255, 255, 255, 0.8)"
             c.fill()
             c.restore()
         }

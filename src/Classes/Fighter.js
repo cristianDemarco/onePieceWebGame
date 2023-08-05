@@ -15,7 +15,7 @@ class Fighter {
         this.maxHealth = null
         this.health = this.maxHealth
 
-        this.iconImage = createImage(`../assets/icons/${this.character}Icon.png`)
+        this.iconImage = createImage(`../assets/icons/${this.character}.png`)
 
         this.moveset = {}
 

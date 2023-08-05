@@ -4,8 +4,8 @@ c = canvas.getContext("2d")
 canvas.width = innerWidth
 canvas.height = innerHeight
 
-const backgrounds = ["enieslobby", "impeldown", "fullshout", "punkhazard", "sabaody"]
-const background = `../assets/backgrounds/${backgrounds[Math.floor(Math.random()*backgrounds.length)]}Background.png`
+const backgrounds = ["enieslobby", "impeldown", "fullshout", "sabaody", "sabaodymangroves", "ohara", "fishmanisland"]
+const background = `../assets/backgrounds/${backgrounds[Math.floor(Math.random()*backgrounds.length)]}.png`
 const gravity = 0.2
 const groundOffset = mapHeight(50)
 const player = new Player ({
