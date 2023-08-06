@@ -7,7 +7,7 @@ const charactersData = {
                 cooldown: 2000,
                 damage: 20,
                 isFlipped : "left",
-                "icon" : "..assets/movesetIcons/stamp.png",
+                isMultiHit : false,
                 spriteSheet: [
                     {
                         x: 9,
@@ -59,7 +59,7 @@ const charactersData = {
                 cooldown: 5000,
                 damage: 40,
                 isFlipped : "left",
-                icon : "..assets/movesetIcons/punch.jpg",
+                isMultiHit : false,
                 spriteSheet: [
                     {
                         x: 4,
@@ -135,7 +135,7 @@ const charactersData = {
                 cooldown: 10000,
                 damage: 80,
                 isFlipped : "left",
-                icon : "..assets/movesetIcons/punch.png",
+                isMultiHit : true,
                 spriteSheet: [
                     {
                         x: 10,
@@ -211,7 +211,7 @@ const charactersData = {
                 cooldown: 12000,
                 damage: 60,
                 isFlipped : "right",
-                icon : null,
+                isMultiHit : true,
                 spriteSheet: [
                     {
                         x: 14,

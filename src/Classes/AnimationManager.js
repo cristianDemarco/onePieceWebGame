@@ -34,7 +34,6 @@ class AnimationManager {
 
             const interval = setInterval(() => {
                 player.moveset[ATTK].angle -= 360 / (cooldown / 1000)
-                console.log(player.moveset[ATTK])
             }, 1000)
 
             setTimeout(() => {
@@ -100,14 +99,14 @@ class AnimationManager {
             if(this.isPlayer){
                 player.width = (sprite.w * this.flipSign) * this.scale
 
-                if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
+                if(this.isAttackOrAnimation === "attacks" && player.attackCollision(this.flipSign)){
                     enemy.health -= this.damage
                 }
             }
             else{
                 enemy.width = (sprite.w * this.flipSign) * this.scale
 
-                if(this.isAttackOrAnimation === "attacks" && player.attackCollision()){
+                if(this.isAttackOrAnimation === "attacks" && player.attackCollision(this.flipSign)){
                     player.health -= this.damage
                 }
             }

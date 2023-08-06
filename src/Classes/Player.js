@@ -99,15 +99,22 @@ class Player extends Fighter {
         c.restore()
     }
 
-    attackCollision(){
+    attackCollision(flipSign){
         if(this.facingDirection === "right"){
-            return (this.position.x + this.width >= enemy.position.x) &&
+            return this.position.x + this.width >= enemy.position.x &&
             this.position.y >= enemy.position.y &&
             this.position.x + this.width <= enemy.position.x + enemy.width
         }else{
-            return (this.position.x + this.width - this.width >= enemy.position.x) &&
-            this.position.y >= enemy.position.y &&
-            this.position.x + this.width - this.width <= enemy.position.x + enemy.width
+            if(flipSign === -1){
+                return this.position.x + this.width <= enemy.position.x + enemy.width &&
+                this.position.y >= enemy.position.y &&
+                this.position.x + this.width >= enemy.position.x
+
+            } else {
+                return this.position.x <= enemy.position.x + enemy.width &&
+                this.position.y >= enemy.position.y &&
+                this.position.x >= enemy.position.x
+           }
         }
     }
 
