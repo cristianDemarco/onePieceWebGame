@@ -2,61 +2,9 @@ const charactersData = {
     rufy: {
         attacks: {
             ATTK1 : {
-                maxFrames: 7,
-                frameRate: 10,
-                cooldown: 2000,
-                damage: 20,
-                isFlipped : "left",
-                isMultiHit : false,
-                spriteSheet: [
-                    {
-                        x: 9,
-                        y: 522,
-                        w: 32,
-                        h: 37,
-                    },
-                    {
-                        x: 53,
-                        y: 508,
-                        w: 35,
-                        h: 51,
-                    },
-                    {
-                        x: 96,
-                        y: 513,
-                        w: 41,
-                        h: 40,
-                    },
-                    {
-                        x: 145,
-                        y: 512,
-                        w: 50,
-                        h: 43,
-                    },
-                    {
-                        x: 207,
-                        y: 513,
-                        w: 60,
-                        h: 37,
-                    },
-                    {
-                        x: 279,
-                        y: 510,
-                        w: 47,
-                        h: 49,
-                    },
-                    {
-                        x: 340,
-                        y: 516,
-                        w: 35,
-                        h: 43,
-                    },
-                ],
-            },
-            ATTK2 : {
                 maxFrames: 11,
                 frameRate: 8,
-                cooldown: 5000,
+                cooldown: 2000,
                 damage: 40,
                 isFlipped : "left",
                 isMultiHit : false,
@@ -126,6 +74,58 @@ const charactersData = {
                         y: 832,
                         w: 27,
                         h: 52,
+                    },
+                ],
+            },
+            ATTK2 : {
+                maxFrames: 7,
+                frameRate: 10,
+                cooldown: 5000,
+                damage: 20,
+                isFlipped : "left",
+                isMultiHit : false,
+                spriteSheet: [
+                    {
+                        x: 9,
+                        y: 522,
+                        w: 32,
+                        h: 37,
+                    },
+                    {
+                        x: 53,
+                        y: 508,
+                        w: 35,
+                        h: 51,
+                    },
+                    {
+                        x: 96,
+                        y: 513,
+                        w: 41,
+                        h: 40,
+                    },
+                    {
+                        x: 145,
+                        y: 512,
+                        w: 50,
+                        h: 43,
+                    },
+                    {
+                        x: 207,
+                        y: 513,
+                        w: 60,
+                        h: 37,
+                    },
+                    {
+                        x: 279,
+                        y: 510,
+                        w: 47,
+                        h: 49,
+                    },
+                    {
+                        x: 340,
+                        y: 516,
+                        w: 35,
+                        h: 43,
                     },
                 ],
             },
@@ -211,7 +211,7 @@ const charactersData = {
                 cooldown: 12000,
                 damage: 60,
                 isFlipped : "right",
-                isMultiHit : true,
+                isMultiHit : false,
                 spriteSheet: [
                     {
                         x: 14,

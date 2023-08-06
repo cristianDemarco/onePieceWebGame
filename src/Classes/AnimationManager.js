@@ -6,6 +6,20 @@ class AnimationManager {
         this.width = 0
     }
 
+    dealDamage(subject){
+        if(this.isAttackOrAnimation === "attacks"
+            && player.attackCollision(this.flipSign)
+        ){
+            if(this.isMultiHit === true){
+                subject.health -= this.damage/this.maxFrames
+    
+            }else if(this.isMultiHit === false){
+                subject.health -= this.damage
+                this.isMultiHit = null
+            }
+        }
+    }
+
     setAnimation(animation, facingDirection, position, width, height, scale){
         this.animation = animation
         this.facingDirection = facingDirection
@@ -18,8 +32,9 @@ class AnimationManager {
         this.maxFrames = this.animationData["maxFrames"]
         this.frameRate = this.animationData["frameRate"]
         const cooldown = this.animationData["cooldown"]
-        this.damage = this.animationData["damage"] / this.maxFrames
+        this.damage = this.animationData["damage"]
         this.isFlipped = this.animationData["isFlipped"]
+        this.isMultiHit = this.animationData["isMultiHit"]
         this.spriteSheet = this.animationData["spriteSheet"]
         this.initialWidth = this.animationData["spriteSheet"][0].w
         this.spriteSheetImage = createImage(`../assets/spriteSheets/${this.character}.png`)
@@ -98,16 +113,11 @@ class AnimationManager {
             if(this.isPlayer){
                 player.width = (sprite.w * this.flipSign) * this.scale
 
-                if(this.isAttackOrAnimation === "attacks" && player.attackCollision(this.flipSign)){
-                    enemy.health -= this.damage
-                }
-            }
-            else{
+                this.dealDamage(enemy)
+            } else {
                 enemy.width = (sprite.w * this.flipSign) * this.scale
 
-                if(this.isAttackOrAnimation === "attacks" && player.attackCollision(this.flipSign)){
-                    player.health -= this.damage
-                }
+                this.dealDamage(player)
             }
 
             if(this.currentFrame === this.maxFrames) {
