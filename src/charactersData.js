@@ -81,7 +81,7 @@ const charactersData = {
                 maxFrames: 7,
                 frameRate: 10,
                 cooldown: 5000,
-                damage: 20,
+                damage: 60,
                 isFlipped : "left",
                 isMultiHit : false,
                 spriteSheet: [
@@ -133,7 +133,7 @@ const charactersData = {
                 maxFrames: 11,
                 frameRate: 10,
                 cooldown: 10000,
-                damage: 80,
+                damage: 100,
                 isFlipped : "left",
                 isMultiHit : true,
                 spriteSheet: [
@@ -208,8 +208,8 @@ const charactersData = {
             ATTK4 : {
                 maxFrames: 8,
                 frameRate: 15,
-                cooldown: 12000,
-                damage: 60,
+                cooldown: 15000,
+                damage: 120,
                 isFlipped : "right",
                 isMultiHit : false,
                 spriteSheet: [

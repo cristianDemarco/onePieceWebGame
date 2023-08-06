@@ -8,10 +8,10 @@ class AnimationManager {
 
     dealDamage(subject){
         if(this.isAttackOrAnimation === "attacks"
-            && player.attackCollision(this.flipSign)
+            && player.attackCollision(this.flipSign, this.initialWidth)
         ){
             if(this.isMultiHit === true){
-                subject.health -= this.damage/this.maxFrames
+                subject.health -= Math.floor(this.damage/this.maxFrames)
     
             }else if(this.isMultiHit === false){
                 subject.health -= this.damage

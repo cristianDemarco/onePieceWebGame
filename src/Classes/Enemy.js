@@ -27,16 +27,22 @@ class Enemy extends Fighter{
     }
 
     drawHUD(){
-        c.save()
+        const fontsize = mapWidth(30)
+
         //Healthbar
+        c.save()
         c.fillStyle = "black"
         c.fillRect(canvas.width - mapWidth(220), mapHeight(80), mapWidth(-600), mapHeight(75))
         c.fillStyle = "red"
         c.fillRect(canvas.width - mapWidth(230), mapHeight(90), mapWidth(-580), mapHeight(55))
         c.fillStyle = "green"
         c.fillRect(canvas.width - mapWidth(230), mapHeight(90), mapWidth((-580 * this.health)/this.maxHealth), mapHeight(55))
+        c.fillStyle = "black"
+        c.fillText(`${this.health}/${this.maxHealth}`, mapWidth(1050), mapHeight(117) + fontsize/3)
+        c.restore()
 
         //Icon
+        c.save()
         c.drawImage(this.iconImage, canvas.width - mapWidth(230), mapHeight(25), mapWidth(180), mapHeight(180))
         c.strokeStyle = "black";
         c.lineWidth = 5;

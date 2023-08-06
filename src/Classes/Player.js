@@ -14,9 +14,12 @@ class Player extends Fighter {
             isPlayer : "player"
         })
 
+        const keys = ["Q", "E", "C", "X"]
+
         Object.values(this.moveset).forEach((element, i) => {
             element["icon"] = createImage(`../assets/movesetIcons/${this.character}ATTK${i + 1}.png`)
             element["angle"] = 0
+            element["letter"] = keys[i]
         })
     }
 
@@ -99,7 +102,7 @@ class Player extends Fighter {
         c.restore()
     }
 
-    attackCollision(flipSign){
+    attackCollision(flipSign, initialWidth){
         if(this.facingDirection === "right"){
             return this.position.x + this.width >= enemy.position.x &&
             this.position.y >= enemy.position.y &&
@@ -119,7 +122,10 @@ class Player extends Fighter {
     }
 
     drawHUD(){
+        const fontsize = mapWidth(30)
+
         //Healthbar
+        c.font = `${fontsize}px serif`
         c.save()
         c.strokeStyle = "black"
         c.fillRect(mapWidth(220), mapHeight(80), mapWidth(640), mapHeight(75))
@@ -127,6 +133,8 @@ class Player extends Fighter {
         c.fillRect(mapWidth(230), mapHeight(90), mapWidth(620), mapHeight(55))
         c.fillStyle = "green"
         c.fillRect(mapWidth(230), mapHeight(90), mapWidth((620 * this.health)/this.maxHealth), mapHeight(55))
+        c.fillStyle = "black"
+        c.fillText(`${this.health}/${this.maxHealth}`, 700, 117 + fontsize/3)
         c.restore()
 
         //Character icon
@@ -139,11 +147,11 @@ class Player extends Fighter {
 
         //Moveset
         const y = mapHeight(220)
-        const radius = 40
-        const offsetRadius = 10
+        const radius = mapWidth(40)
+        const offsetRadius = mapWidth(10)
         
         for(let i = 1; i <= Object.keys(this.moveset).length; i++){
-            const x = 200 + 125 * i
+            const x = mapWidth(200) + mapWidth(125) * i
             
             //Draw the image
             c.moveTo(x + radius + offsetRadius, y)
@@ -171,6 +179,10 @@ class Player extends Fighter {
             
             c.fillStyle = "rgba(255, 255, 255, 0.8)"
             c.fill()
+            c.restore()
+
+            c.save()
+            c.fillText(this.moveset[`ATTK${i}`].letter, x - fontsize/3, y + radius * 2)
             c.restore()
         }
     }
