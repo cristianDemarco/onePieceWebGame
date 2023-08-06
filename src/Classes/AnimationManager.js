@@ -6,11 +6,10 @@ class AnimationManager {
         this.width = 0
     }
 
-    setAnimation(animation, facingDirection, ATTK, position, width, height, scale){
+    setAnimation(animation, facingDirection, position, width, height, scale){
         this.animation = animation
         this.facingDirection = facingDirection
-        this.isAttackOrAnimation = typeof ATTK === "string" ? "attacks" : "spriteSheets"
-        this.ATTK = ATTK
+        this.isAttackOrAnimation = animation.includes("ATTK") ? "attacks" : "spriteSheets"
         this.position = position
         this.width = width
         this.height = height
@@ -30,15 +29,15 @@ class AnimationManager {
         this.flipSign = 1
 
         if(this.isPlayer && this.isAttackOrAnimation === "attacks"){
-            player.moveset[ATTK].angle = 2
+            player.moveset[animation].angle = 2
 
             const interval = setInterval(() => {
-                player.moveset[ATTK].angle -= 360 / (cooldown / 1000)
+                player.moveset[animation].angle -= 360 / (cooldown / 1000)
             }, 1000)
 
             setTimeout(() => {
-                player.moveset[ATTK].canAttack = true
-                player.moveset[ATTK].angle = 0
+                player.moveset[animation].canAttack = true
+                player.moveset[animation].angle = 0
                 clearInterval(interval)
             }, cooldown)
         }
@@ -116,7 +115,7 @@ class AnimationManager {
 
                 if(this.isAttackOrAnimation === "attacks") {
                     if(this.isPlayer){
-                        player.moveset[this.ATTK].isAttacking = false
+                        player.moveset[this.animation].isAttacking = false
                         player.isAttacking = false
                     }
                 }

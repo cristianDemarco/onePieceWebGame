@@ -1,7 +1,7 @@
 const charactersData = {
     rufy: {
         attacks: {
-            stamp: {
+            ATTK1 : {
                 maxFrames: 7,
                 frameRate: 10,
                 cooldown: 2000,
@@ -53,7 +53,7 @@ const charactersData = {
                     },
                 ],
             },
-            pistol: {
+            ATTK2 : {
                 maxFrames: 11,
                 frameRate: 8,
                 cooldown: 5000,
@@ -129,7 +129,7 @@ const charactersData = {
                     },
                 ],
             },
-            gatling: {
+            ATTK3 : {
                 maxFrames: 11,
                 frameRate: 10,
                 cooldown: 10000,
@@ -205,7 +205,7 @@ const charactersData = {
                     },
                 ],
             },
-            bazooka: {
+            ATTK4 : {
                 maxFrames: 8,
                 frameRate: 15,
                 cooldown: 12000,

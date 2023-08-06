@@ -3,7 +3,7 @@ class Enemy extends Fighter{
 
         super(position, velocity, character, scale)
 
-        this.position.x = canvas.width - mapWidth(500) - this.width
+        this.position.x = canvas.width - mapWidth(200) - this.width
         this.facingDirection = "left"
         this.maxHealth = 1000,
         this.health = this.maxHealth
@@ -17,7 +17,7 @@ class Enemy extends Fighter{
     draw(){
         if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
             this.animation = this.animationManager.setAnimation(
-                "standing", this.facingDirection, null, this.position, this.width, this.height, this.scale
+                "standing", this.facingDirection, this.position, this.width, this.height, this.scale
             )
         }
 

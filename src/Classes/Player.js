@@ -42,24 +42,24 @@ class Player extends Fighter {
     }
 
     attack(){
-        if(this.moveset["ATTK1"].isAttacking && this.animationManager.animation != "pistol"){
+        if(this.moveset["ATTK1"].isAttacking && this.animationManager.animation != "ATTK1"){
             this.animation = this.animationManager.setAnimation(
-                "pistol", this.facingDirection, "ATTK1", this.position, this.width, this.height, this.scale
+                "ATTK1", this.facingDirection, this.position, this.width, this.height, this.scale
             )
 
-        } else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "stamp"){
+        } else if(this.moveset["ATTK2"].isAttacking && this.animationManager.animation != "ATTK2"){
             this.animation = this.animationManager.setAnimation(
-                "stamp", this.facingDirection, "ATTK2", this.position, this.width, this.height, this.scale
+                "ATTK2", this.facingDirection, this.position, this.width, this.height, this.scale
             )
             
-        } else if(this.moveset["ATTK3"].isAttacking && this.animationManager.animation != "gatling"){
+        } else if(this.moveset["ATTK3"].isAttacking && this.animationManager.animation != "ATTK3"){
             this.animation = this.animationManager.setAnimation(
-                "gatling", this.facingDirection, "ATTK3", this.position, this.width, this.height, this.scale
+                "ATTK3", this.facingDirection, this.position, this.width, this.height, this.scale
             )
 
-        } else if(this.moveset["ATTK4"].isAttacking && this.animationManager.animation != "bazooka"){
+        } else if(this.moveset["ATTK4"].isAttacking && this.animationManager.animation != "ATTK4"){
             this.animation = this.animationManager.setAnimation(
-                "bazooka", this.facingDirection, "ATTK4", this.position, this.width, this.height, this.scale
+                "ATTK4", this.facingDirection, this.position, this.width, this.height, this.scale
             )
         }
     }
@@ -74,19 +74,19 @@ class Player extends Fighter {
     animate(){
         if(this.velocity.x === 0 && this.velocity.y === 0 && this.animationManager.animation != "standing"){
             this.animation = this.animationManager.setAnimation(
-                "standing", this.facingDirection, null, this.position, this.width, this.height, this.scale
+                "standing", this.facingDirection, this.position, this.width, this.height, this.scale
             )
         }
 
         if(this.velocity.x != 0 && this.velocity.y === 0 && this.animationManager.animation != "running"){
             this.animation = this.animationManager.setAnimation(
-                "running", this.facingDirection, null, this.position, this.width, this.height, this.scale
+                "running", this.facingDirection, this.position, this.width, this.height, this.scale
             )
         }
 
         if(this.velocity.y != 0 && this.animationManager.animation != "jumping"){
             this.animation = this.animationManager.setAnimation(
-                "jumping", this.facingDirection, null, this.position, this.width, this.height, this.scale
+                "jumping", this.facingDirection, this.position, this.width, this.height, this.scale
             )
         }
     }

@@ -45,8 +45,6 @@ function animate(){
     player.update()
 
     checkIfKeysPressed()
-
-    console.log(player.attackCollision())
 }
 
 animate()
