@@ -196,7 +196,7 @@ class Player extends Fighter {
 
     update(){
         if(this.position.x + this.velocity.x >= 0 &&
-            this.position.x + this.velocity.x + this.width <= canvas.width){
+            this.position.x + this.velocity.x + this.width * this.animationManager.flipSign <= canvas.width){
                 this.position.x += this.velocity.x
             }
 
