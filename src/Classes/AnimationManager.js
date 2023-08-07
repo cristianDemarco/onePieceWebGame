@@ -13,7 +13,7 @@ class AnimationManager {
             if(this.isMultiHit === true){
                 subject.health -= Math.floor(this.damage/this.maxFrames)
     
-            }else if(this.isMultiHit === false){
+            } else if(this.isMultiHit === false){
                 subject.health -= this.damage
                 this.isMultiHit = null
             }
@@ -99,7 +99,7 @@ class AnimationManager {
                         sprite.h,
                         -this.position.x - sprite.w * this.flipSign * this.scale + this.offsetx,
                         this.position.y,
-                        sprite.w * this.scale * this.flipSign,
+                        sprite.w * this.flipSign * this.scale,
                         sprite.h * this.scale
             )
 
@@ -111,11 +111,21 @@ class AnimationManager {
             this.currentFrame++
 
             if(this.isPlayer){
-                player.width = (sprite.w * this.flipSign) * this.scale
+                if(this.flipSign === -1){
+                    console.log(this.initialWidth)
+                    player.width = (sprite.w * this.flipSign) * this.scale + this.initialWidth * 2
+                } else {
+                    player.width = (sprite.w * this.flipSign) * this.scale
+                }
+               
 
                 this.dealDamage(enemy)
             } else {
-                enemy.width = (sprite.w * this.flipSign) * this.scale
+                if(this.flipSign === -1){
+                    enemy.width = (sprite.w * this.flipSign) * this.scale + this.initialWidth
+                } else {
+                    enemy.width = (sprite.w * this.flipSign) * this.scale
+                }
 
                 this.dealDamage(player)
             }

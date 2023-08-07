@@ -99,14 +99,21 @@ class Player extends Fighter {
         c.strokeStyle = "red"
         c.lineWidth = 3
         c.strokeRect(this.position.x, this.position.y, this.width, this.height)
+        c.fillRect(this.position.x -5 , this.position.y -5, 10, 10)
         c.restore()
     }
 
     attackCollision(flipSign, initialWidth){
         if(this.facingDirection === "right"){
-            return this.position.x + this.width >= enemy.position.x &&
-            this.position.y >= enemy.position.y &&
-            this.position.x + this.width <= enemy.position.x + enemy.width
+            if(flipSign === -1){
+                return this.position.x + initialWidth >= enemy.position.x &&
+                this.position.y >= enemy.position.y &&
+                this.position.x + initialWidth <= enemy.position.x + enemy.width
+            } else {
+                return this.position.x + this.width >= enemy.position.x &&
+                this.position.y >= enemy.position.y &&
+                this.position.x + this.width <= enemy.position.x + enemy.width
+            }
         }else{
             if(flipSign === -1){
                 return this.position.x + this.width <= enemy.position.x + enemy.width &&
