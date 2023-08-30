@@ -18,6 +18,5 @@ Following some images of the game.
     <br>
     <img src="images/img2.png">
     <p><i>The player's character during an attack animation</i></p>
-    <br>
 <div>
 
