@@ -3,7 +3,7 @@ class Enemy extends Fighter{
 
         super(position, velocity, character, scale)
 
-        this.position.x = canvas.width - mapWidth(500) - this.width
+        this.position.x = canvas.width - mapWidth(200) - this.width
         this.facingDirection = "left"
         this.maxHealth = 1000,
         this.health = this.maxHealth
