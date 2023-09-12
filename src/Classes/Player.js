@@ -40,7 +40,7 @@ class Player extends Fighter {
 
         this.animationManager.facingDirection = this.facingDirection
         
-        this.drawAttackBox()
+        //this.drawAttackBox()
         this.animationManager.play()
     }
 
