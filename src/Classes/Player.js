@@ -141,7 +141,7 @@ class Player extends Fighter {
         c.fillStyle = "green"
         c.fillRect(mapWidth(230), mapHeight(90), mapWidth((620 * this.health)/this.maxHealth), mapHeight(55))
         c.fillStyle = "black"
-        c.fillText(`${this.health}/${this.maxHealth}`, 700, 117 + fontsize/3)
+        c.fillText(`${this.health}/${this.maxHealth}`, mapWidth(700), mapHeight(117) + fontsize/3)
         c.restore()
 
         //Character icon
